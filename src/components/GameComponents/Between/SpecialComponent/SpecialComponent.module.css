@@ -1,0 +1,14 @@
+.square {
+
+
+
+    width: 15%;
+    border: 2px solid saddlebrown;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+
+
+}

@@ -1,0 +1,11 @@
+.square { 
+    
+    
+    width: 7.5%;
+    border: 2px solid saddlebrown;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}

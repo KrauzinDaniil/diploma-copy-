@@ -1,0 +1,79 @@
+.square { 
+    
+    
+    width: 15%;
+    border: 2px solid saddlebrown;
+    display: flex;
+    
+    align-items: center;
+  
+
+}
+.cell { 
+    display: flex;
+    
+    align-items: center;
+    height: 100%;
+    width: 40%;
+
+    
+
+}
+
+
+
+.easy { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(230, 81, 0, 1), rgb(237, 169, 238));
+}
+
+.medium { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(230, 81, 0, 1), rgb(213, 105, 240));
+}
+.hard { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(230, 81, 0, 1), rgb(140, 7, 136))
+}
+
+.subjectColor {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform: rotate(-90deg);
+    width: 40%;
+    height: 100%;
+
+    
+}
+
+.subjectColor :last-child { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ width: 50%;
+ height: 50%;
+   
+}
+.lowLabel {
+    
+}
+
+.points { 
+    transform: rotate(-90deg);
+    white-space: nowrap;
+
+}

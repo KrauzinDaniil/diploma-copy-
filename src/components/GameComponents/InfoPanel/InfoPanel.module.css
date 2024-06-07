@@ -1,0 +1,122 @@
+.infoPanel { 
+    position: fixed;
+    top: 0;
+    right: 0;
+    color: rgb(245, 245, 245);
+    margin-left: 10%;
+    width: 20%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(36, 36, 36, 1), rgba(251, 136, 5, 0.4));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.scoreBoard { 
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+}
+.teamCircle { 
+
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    position: relative;
+    background-color: aquamarine;
+    border: 5px solid white;
+ 
+ }
+ .imageTeamy {
+    position: absolute; 
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+ }
+.scoreList { 
+    margin: 4%;
+    font-size: 20px;
+}
+.teams { 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+.teamElement { 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.teams > div { 
+    margin-top: 5%;
+}
+.imga { 
+    position: relative;
+    margin-top: 5px;
+    border-radius: 50%;
+    border: 3px solid rgb(233, 180, 65);
+}
+.circle { 
+    
+    width: 70px;
+    height: 70px;
+}
+
+.team { 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    white-space: nowrap;
+}
+.yourPanel{ 
+   margin-top: 5%;
+   margin-left: 5%;
+   width: 100%;
+}
+
+.youLabel {
+    font-size: 20px;
+}
+.yourTeam{
+
+    display: flex;
+    flex-direction: column;
+
+
+
+}
+.teamName { 
+    
+}
+.teamData {
+    
+    margin-top: 5%;
+    margin-left: 5%;
+    display: flex;
+    
+
+    align-items: center;
+    justify-content: space-between;
+    
+}
+.teamAndAvatar { 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.scores {
+     margin-right: 25%;
+}
+.whatYouOwn { 
+    margin-top: 10%;
+    display: flex;
+    justify-content: space-evenly;
+}

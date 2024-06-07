@@ -1,0 +1,58 @@
+.square { 
+    
+    width: 15%;
+    aspect-ratio: 1 / 1;
+    font-family: 'Russo', sans-serif;
+    border: 2px solid saddlebrown;
+    display: flex;
+    position: relative;
+ 
+    
+}
+.label { 
+    transform: rotate(-45deg);
+    margin-left: 5%;
+    width: 100%;
+ 
+}
+.when { 
+   
+   display: flex;
+   justify-content: center;
+  
+}
+
+.cell { 
+    display: flex;
+    flex-direction: column;
+    transform: rotate(90deg);
+    height: 100%;
+  
+   
+}
+.goLabel { 
+    position: absolute;
+    font-family: 'SeymourOne', sans-serif;
+    transform: rotate(-45deg);
+    font-size: 30px;
+    bottom: 15%;
+    right: 15%;
+}
+
+.arrow { 
+    position: absolute;
+    font-family: 'SeymourOne', sans-serif;
+    transform: rotate(-45deg);
+    width: 25%;
+    height: 25%;
+    bottom: 5%;
+    right: 7%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+.arrow :first-child  { 
+      width: 65%;
+      height: 65%;
+}

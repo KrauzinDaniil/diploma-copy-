@@ -1,0 +1,105 @@
+.gameField { 
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    
+    
+
+
+}
+
+.innerWrapper {
+    height: 140%;
+    width: 120%;
+    display: flex;
+    flex-direction: column;
+    padding: 5%;
+    position: relative;
+
+    
+
+
+}
+
+.wrappa { 
+    display: flex;
+    justify-content: space-between;
+}
+
+.leftSide  { 
+    display: flex;
+    flex-direction: column;
+}
+.dices { 
+    position: absolute;
+    height: 90%;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    
+
+   
+}
+.teamCircle { 
+
+   height: 100px;
+   width: 100px;
+   border-radius: 50%;
+   border: 5px solid white;
+   position: relative;
+
+}
+.iconic {
+    position: absolute; 
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.buttonThrow { 
+    margin-bottom: 2%;
+    white-space: nowrap;
+    cursor: pointer;
+  
+    width: 10%;
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.playerName{ 
+    font-size: larger;
+}
+.imga { 
+    width: 70px;
+    height: 70px;
+    margin-top: 5px;
+    border-radius: 50%;
+    border: 3px solid rgb(233, 180, 65);
+}
+
+img { 
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.rolledNumber { 
+    margin-top: 10px;
+        height: 5%;
+        width: 5%;
+        border: 7px solid rgb(139, 69, 19);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        font-size: 35px;
+        color: saddlebrown;
+        font-family: 'Russo', sans-serif;
+      
+}

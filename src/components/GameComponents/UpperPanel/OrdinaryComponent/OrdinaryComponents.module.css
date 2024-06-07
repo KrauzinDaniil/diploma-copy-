@@ -1,0 +1,70 @@
+.square { 
+    
+    
+    width: 7.5%;
+    border: 2px solid saddlebrown;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.cell { 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 40%;
+    width: 100%;
+   
+
+}
+
+
+
+.easy { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 20%;
+    background: linear-gradient(to top, rgba(230, 81, 0, 0.5), rgb(234, 245, 215));
+}
+.medium { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 20%;
+    background: linear-gradient(to top, rgba(230, 81, 0, 0.5), rgb(200, 239, 151));
+}
+.hard { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 20%;
+    background: linear-gradient(to top, rgba(230, 81, 0, 0.8), rgb(89, 184, 26));
+}
+
+.subjectColor {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    width: 100%;
+    height: 40%;
+
+    
+}
+
+.subjectColor :first-child { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+    height: 50%;
+    width: 50%;
+}
+.lowLabel {
+
+}

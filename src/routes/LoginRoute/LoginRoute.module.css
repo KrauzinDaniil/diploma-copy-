@@ -1,0 +1,21 @@
+.whenLogined { 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 98vw;
+
+}
+.avatar{ 
+    position: relative;
+    height: 200px;
+    width: 200px;
+    border: 10px solid white;
+    border-radius: 50% ;
+    
+}
+.avatarImage { 
+    position: absolute;
+    object-fit: cover;
+}

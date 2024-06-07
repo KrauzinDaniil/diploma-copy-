@@ -1,0 +1,33 @@
+
+body {
+  font-family: 'Comfortaa', sans-serif;
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+  line-height: 1.5;
+  font-weight: 400;
+  width: 100vw;
+  height: 100vh;
+
+  
+}
+
+
+
+@font-face {
+  font-family: Comfortaa;
+  src: local('Comfortaa'),
+    url('./assets/fonts/Comfortaa/Comfortaa-Regular.ttf') format('truetype'),
+}
+
+@font-face {
+  font-family: Russo;
+  src: local('Russo'),
+    url('./assets/fonts/Russo/RussoOne-Regular.ttf') format('truetype'),
+}
+
+@font-face {
+  font-family: SeymourOne;
+  src: local('SeymourOne'),
+    url('./assets/fonts/SeymourOne/SeymourOne-Regular.ttf') format('truetype'),
+}

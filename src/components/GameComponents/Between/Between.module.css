@@ -1,0 +1,16 @@
+.wrappLike { 
+
+ display: flex;
+ justify-content: space-between;
+ 
+ flex: 1;
+ 
+}
+
+.mainWrappa{ 
+
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  
+}

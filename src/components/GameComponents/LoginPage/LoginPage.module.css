@@ -1,0 +1,62 @@
+.logination { 
+    width: 120%;
+    height: 100%;
+    display:flex;
+    flex-direction: row; 
+    
+
+    
+}
+
+.greeting {
+    font-size: 30px;
+}
+
+.myForm { 
+    font-family: 'Comfortaa', sans-serif;
+    color: aliceblue;
+}
+.customFormItem {
+    color: aliceblue;
+}
+
+.innerForm { 
+   display: flex;
+   flex-direction: column;
+   width: 40%;
+   
+   
+}
+.form { 
+    margin-top: 20%;
+}
+
+.userOutcome{ 
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20%;
+}
+.avatar{ 
+    height: 200px;
+    width: 200px;
+    border: 10px solid white;
+    border-radius: 50% ;
+    position: relative;
+    
+}
+.teamName { 
+   
+    display: flex;
+    justify-content: center;
+    width: 200px;
+    font-size: 30px;
+    text-wrap: nowrap;
+}
+.innerImage {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
