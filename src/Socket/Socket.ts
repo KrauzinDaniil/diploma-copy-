@@ -21,7 +21,7 @@ export class SocketShell {
             if(this.socket !== null)  {   
             this.registerListeners();
             }
-        }, 5000)
+        }, 1000)
     
     
                 
@@ -50,7 +50,7 @@ export class SocketShell {
             
             this.socket?.emit("showUsers", ("")); },
             
-         3000)
+         2000)
        
     }
 
@@ -70,7 +70,7 @@ export class SocketShell {
                 
         setTimeout(() => {
             this.registerListeners();
-        }, 5000)
+        }, 1000)
        
            
     }
