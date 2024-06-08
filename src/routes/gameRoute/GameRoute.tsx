@@ -1,6 +1,6 @@
 import React from "react";
-import userStore from "../../types/store/UserStore";
-import gameStore from "../../types/store/GameStore";
+import userStore from "../../store/UserStore";
+import gameStore from "../../store/GameStore";
 import Game from "../../components/GameComponents/Game";
 import { Link } from "react-router-dom";
 import { observer } from "mobx-react-lite"

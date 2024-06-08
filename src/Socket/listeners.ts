@@ -22,6 +22,7 @@ export default function listenerSetter(socket: Socket, dispatchUser: (action: st
         dispatchGameState("spinCube", data)
     })
     socket.on("provideState", data =>{  
+
         dispatchGameState("getState", data)
         dispatchUser("getState", data);
     })
@@ -50,6 +51,7 @@ export default function listenerSetter(socket: Socket, dispatchUser: (action: st
       dispatchGameState("prison", "")
     })
     socket.on("showShop", data => { 
+      
       dispatchGameState("showShop", "")
     })
     socket.on("notEnoughScores", data =>{  

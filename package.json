@@ -1,6 +1,6 @@
 {
   "name": "diploma",
-  "private": true,
+  
   "version": "0.0.0",
   "type": "module",
   "scripts": {
@@ -19,7 +19,7 @@
     "express": "^4.19.2",
     "express-fileupload": "^1.5.0",
     "http": "^0.0.1-security",
-    "mobx": "^6.12.3",
+    "mobx": "^6.12.1",
     "mobx-react-lite": "^4.0.7",
     "mysql": "^2.18.1",
     "react": "^18.2.0",
@@ -33,6 +33,8 @@
   },
   "devDependencies": {
     "@preact/signals-react-transform": "^0.3.1",
+    "@types/babel__generator": "^7.6.8",
+    "@types/babel__template": "^7.4.4",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
     "@typescript-eslint/eslint-plugin": "^7.2.0",

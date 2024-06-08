@@ -51,7 +51,7 @@ export class Game {
   //тест данные
   setPlayerPositionTest() {
     this.players.get(0).position = 35;
-    this.players.get(1).score = 35;
+    this.players.get(1).position = 35;
     this.players.get(0).score = 3500;
     this.players.get(1).score = 3500;
     this.players.get(0).addOwnedState(4);
@@ -291,9 +291,11 @@ export class Game {
         type: cardToInform.type,
       });
       this.getPersonalData(id);
-      this.setTurn();
+     
       setTimeout(() => {
+        
         this.serverSocket.hideWheel();
+        this.setTurn();
       }, 5000);
     }
   }

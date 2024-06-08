@@ -43,7 +43,6 @@ export class ServerSocket {
   }
   sendPersonalData(data, id) {
     const newData = { ...data };
-
     newData.bonusCards = Object.entries(newData.bonusCards).map(
       ([type, amount]) => ({ type, amount })
     );

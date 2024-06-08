@@ -50,6 +50,7 @@ const Dices: React.FC<{
 
   return (
     <div className={classes.dicess}>
+   
       <div className={classes.cubic}>{animation}</div>
 
       <div className={classes.cubic}>{animation2}</div>

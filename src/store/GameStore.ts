@@ -105,6 +105,7 @@ class GameStore {
 
   @action
   cubeRoll = () => {
+    console.log("rolling")
     runInAction(() => {
       this.spinning = false;
       this.cubeIsRolling = true;
@@ -148,6 +149,12 @@ class GameStore {
   hideWheel = () => {
     runInAction(() => {
       this.actionPicker = { actionType: "dices", numberSpinned: null };
+      this.shopInformation = {
+        inform: null,
+        type: null,
+        amount: null,
+      }
+     
     });
   };
   @action

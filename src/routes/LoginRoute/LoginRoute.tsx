@@ -1,5 +1,5 @@
 import LoginPage from "../../components/GameComponents/LoginPage/LoginPage"; 
-import userStore from "../../types/store/UserStore";
+import userStore from "../../store/UserStore";
 import { observer } from "mobx-react-lite"
 import { Link,} from 'react-router-dom';
 import classes from "./LoginRoute.module.css"

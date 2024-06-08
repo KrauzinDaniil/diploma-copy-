@@ -1,3 +1,7 @@
+
+
+
+
 import { observable, action, makeObservable, runInAction, computed } from "mobx";
 import { SocketShell } from "../Socket/Socket";
 import storage from "../utils/utils";
@@ -97,7 +101,7 @@ class UserStore {
   @action 
   setPersonalData = (personalData: userTableDisplay) => {
       this.personalData = personalData; 
-      console.log(personalData);
+      "adad"
   }
 
   @action 
@@ -182,8 +186,6 @@ class UserStore {
   const key:string = storage.get("userKey")
 
   const userStore = new UserStore(key);
-  
-  console.log("юзер")
   
   export default userStore;
   
