@@ -43,10 +43,12 @@ export class ServerSocket {
   }
   sendPersonalData(data, id) {
     const newData = { ...data };
-    newData.bonusCards = Object.entries(newData.bonusCards).map(
-      ([type, amount]) => ({ type, amount })
-    );
-
+    newData.bonusCards = []
+    console.log(data.bonusCards)
+    data.bonusCards.forEach((value, key) => {
+      newData.bonusCards.push({type: key, amount:value})
+    });
+    console.log(newData)
     this.io
       .to(this.mapPlayerIdToSocket.get(id))
       .emit("sendPersonalData", JSON.stringify(newData));
@@ -135,7 +137,9 @@ export class ServerSocket {
             this.gameDispatch("userHandleStopSpinning",  {
               id: this.getId(data)
             }) 
-          ; //dispatch("clickedOnCard", {token: token, numberPicked:data})
+         break 
+         case"deleteWrongOptions":
+            this.gameDispatch("deleteWrongOptions", {id: this.getId(data)}) 
       }
     } catch (error) {
       ("");

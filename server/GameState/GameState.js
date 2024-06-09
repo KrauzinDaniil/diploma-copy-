@@ -3,6 +3,7 @@ import { Player } from "./models/playerState.js";
 import { randomNumber } from "../utils/generateRandom.js";
 import { BonusCardInfoProvider } from "./bonusCards.js/bonusCardInfoProvider.js";
 import { ActionHandler } from "./cardHandlers/actionHandler.js";
+import e from "cors";
 export class Game {
   id;
   isStarted;
@@ -186,7 +187,7 @@ export class Game {
     } else {
       displayTurn = this.players.get(this.currentTurn);
     }
-
+   
     return {
       players: playerList,
       isStarted: this.isStarted,
@@ -194,18 +195,24 @@ export class Game {
       playerTurn: displayTurn,
     };
   }
+   
+  applyCardScore(id) { 
+    this.players.get(id).applyScore()
+  }
 
   //передвижение
   movePlayer(id) {
     if (id !== this.currentTurn) {
       return;
     }
+ 
 
     const player = this.players.get(id);
     
     const timer = setInterval(() => {
       if (this.numberRolled !== 0) {
         if (player.position === 40) {
+          this.applyCardScore(id)
           this.numberRolled = 0;
           player.position = 1;
         } else {
@@ -257,7 +264,20 @@ export class Game {
   //выдать клиенту (определенному) его данные 
   getPersonalData(id) {
     const toSend = this.players.get(id);
+    console.log("sended")
+    console.log(toSend)
     this.serverSocket.sendPersonalData(toSend, id);
+  }
+  deleteWrongOptionsFromQuest(id)  {
+    if(id !== this.currentTurn) { return}
+    const cutQuestNumber = this.players.get(id).getWrongCardMultiplier();
+    let result; 
+    if(cutQuestNumber != false)  {
+         result = this.actionHandler.modifyQuest(cutQuestNumber);
+    }
+    if(result.response === true) { 
+      this.serverSocket.executeModal(JSON.stringify(result.data))
+    }
   }
 
   //TODO
@@ -332,6 +352,9 @@ export class Game {
         break
       case "userHandleStopSpinning" : 
          this.performResponseSpin(data.id);  
+        break
+      case "deleteWrongOptions": 
+         this.deleteWrongOptionsFromQuest(data.id)    
     }
   };
 }

@@ -128,6 +128,7 @@ class GameStore {
       this.modalToDisplay = data;
       this.spinning = true;
     });
+    console.log(this.modalToDisplay)
   };
 
   @action
@@ -240,6 +241,7 @@ class GameStore {
             this.setState(JSON.parse(data));
             break;
           case "executeModal":
+            console.log(data)
             this.setModal(JSON.parse(data));
             break;
           case "sendResults":

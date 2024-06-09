@@ -4,6 +4,7 @@ import { FaBook } from "react-icons/fa";
 import { modalWindow } from "../../../types/modalWindow";
 import { displayTurn } from "../../../types/displayTurn";
 import { useState } from "react";
+import { userTableDisplay } from "../../../types/userTableType";
 const modalDialog = document.getElementById("modal");
 type triggerFunc = (action: string, data: string) => void;
 type UpdateStateFunction = (newValue: boolean) => void;
@@ -13,9 +14,11 @@ const Modal: React.FC<{
   triggerUserChange: triggerFunc;
   triggerGameChange: triggerFunc;
   displayTurn: displayTurn;
+  personalData: userTableDisplay | null;
   showModal: UpdateStateFunction;
-}> = ({ triggerUserChange, obj, displayTurn, showModal }) => {
+}> = ({ triggerUserChange, obj, displayTurn, showModal, personalData }) => {
   const [showUser, setShowUser] = useState(displayTurn);
+  const [showCardPanel, setShowCardPanel] = useState(false);
 
   function hide() {
     showModal(false);
@@ -77,7 +80,7 @@ const Modal: React.FC<{
             "Область не занята"
           )}{" "}
         </div>
-        {!obj?.outcome ? (
+        {!obj?.outcome ? !showCardPanel ?  ( 
           <div className={classes.answers}>
             <div className={classes.inWrapper}>
               <div
@@ -85,15 +88,17 @@ const Modal: React.FC<{
                   clicked(1);
                 }}
                 className={classes.buttonAnswer}
+                style={{backgroundColor: obj?.answers[0] === "incorrect" ? "saddlebrown" : "transparent" }}
               >
                 {" "}
-                {obj ? obj.answers[0] : ""}{" "}
+                {obj ?  obj.answers[0] : ""}{" "}
               </div>
               <div
                 onClick={() => {
                   clicked(2);
                 }}
                 className={classes.buttonAnswer}
+                style={{backgroundColor: obj?.answers[1] === "incorrect" ? "saddlebrown" : "transparent" }}
               >
                 {" "}
                 {obj ? obj.answers[1] : ""}{" "}
@@ -103,6 +108,7 @@ const Modal: React.FC<{
                   clicked(3);
                 }}
                 className={classes.buttonAnswer}
+                style={{backgroundColor: obj?.answers[2] === "incorrect" ? "saddlebrown" : "transparent" }}
               >
                 {" "}
                 {obj ? obj.answers[2] : ""}
@@ -114,6 +120,7 @@ const Modal: React.FC<{
                   clicked(4);
                 }}
                 className={classes.buttonAnswer}
+                style={{backgroundColor: obj?.answers[3] === "incorrect" ? "saddlebrown" : "transparent" }}
               >
                 {" "}
                 {obj ? obj.answers[3] : ""}{" "}
@@ -123,6 +130,7 @@ const Modal: React.FC<{
                   clicked(5);
                 }}
                 className={classes.buttonAnswer}
+                style={{backgroundColor: obj?.answers[4] === "incorrect" ? "saddlebrown" : "transparent" }}
               >
                 {" "}
                 {obj ? obj.answers[4] : ""}{" "}
@@ -132,6 +140,7 @@ const Modal: React.FC<{
                   clicked(6);
                 }}
                 className={classes.buttonAnswer}
+                style={{backgroundColor: obj?.answers[5] === "incorrect" ? "saddlebrown" : "transparent" }}
               >
                 {" "}
                 {obj ? obj.answers[5] : ""}
@@ -143,6 +152,7 @@ const Modal: React.FC<{
                   clicked(7);
                 }}
                 className={classes.buttonAnswer}
+                style={{backgroundColor: obj?.answers[6] === "incorrect" ? "saddlebrown" : "transparent" }}
               >
                 {" "}
                 {obj ? obj.answers[6] : ""}{" "}
@@ -152,6 +162,7 @@ const Modal: React.FC<{
                   clicked(8);
                 }}
                 className={classes.buttonAnswer}
+                style={{backgroundColor: obj?.answers[7] === "incorrect" ? "saddlebrown" : "transparent" }}
               >
                 {" "}
                 {obj ? obj.answers[7] : ""}{" "}
@@ -161,13 +172,23 @@ const Modal: React.FC<{
                   clicked(9);
                 }}
                 className={classes.buttonAnswer}
+                style={{backgroundColor: obj?.answers[8] === "incorrect" ? "saddlebrown" : "transparent" }}
               >
                 {" "}
                 {obj ? obj.answers[8] : ""}
               </div>
             </div>
           </div>
-        ) : obj.outcome === "Правильно" ? (
+        ) : 
+           <div>
+            Ваши карточки 
+        <div className={classes.cardWrapper}> 
+            
+            <div onClick={() => { triggerUserChange("clickedDeleteWrongCard", "") }}> {personalData?.bonusCards[personalData.bonusCards.findIndex(obj => obj.type ==="deleteWrong")]?.type}</div>
+            <div onClick={() => { triggerUserChange("clickedMultiplyScores", "") }}> {personalData?.bonusCards[personalData.bonusCards.findIndex(obj => obj.type ==="appliedScore")]?.type}</div>
+          
+        </div>
+            </div> : obj.outcome === "Правильно" ? (
           <div>
             <div> Верно</div>
             <div onClick={hide}> Продолжить </div>
@@ -179,7 +200,9 @@ const Modal: React.FC<{
           </div>
         )}
 
-        <div style={{ marginTop: "5%" }}> Использовать карточки</div>
+        <div style={{ marginTop: "5%" }} className={classes.cardButton} onClick={() => { 
+          setShowCardPanel(!showCardPanel);
+        }}> Использовать карточки</div>
         <div className={classes.indicator}>
           {/*Осталось времени: {remainingTime} секунд*/}
         </div>

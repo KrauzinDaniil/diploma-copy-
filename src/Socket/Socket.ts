@@ -107,5 +107,8 @@ export class SocketShell {
     userHandleStopSpinning() { 
         this.socket?.emit("userHandleStopSpinning", "");
     }
+    deleteWrongOptions() { 
+        this.socket?.emit("deleteWrongOptions", "");
+    }
 
 }

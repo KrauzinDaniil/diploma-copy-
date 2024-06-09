@@ -101,7 +101,7 @@ class UserStore {
   @action 
   setPersonalData = (personalData: userTableDisplay) => {
       this.personalData = personalData; 
-      "adad"
+      console.log(this.personalData)
   }
 
   @action 
@@ -122,6 +122,10 @@ class UserStore {
   @action 
   userHandleStopSpinning =() =>  {
     this.socket.userHandleStopSpinning();
+  }
+  @action 
+  deleteWrongOptions = () =>  {
+    this.socket.deleteWrongOptions();
   }
  
  
@@ -164,6 +168,9 @@ class UserStore {
           break 
           case "stoppedSpinning":
           this.userHandleStopSpinning();    
+          break 
+          case "clickedDeleteWrongCard": 
+          this.deleteWrongOptions();
           
 
           

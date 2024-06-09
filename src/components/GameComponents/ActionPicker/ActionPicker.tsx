@@ -50,7 +50,7 @@ const ActionPicker: React.FC<{dices: DicesProps, displayTurn: displayTurn, teamN
     }
   }
         
-    console.log(actionPicker)
+    
     return (
          
          actionPicker.actionType === "dices" ? (<div className={classes.dices}>

@@ -27,12 +27,14 @@ export default function listenerSetter(socket: Socket, dispatchUser: (action: st
         dispatchUser("getState", data);
     })
     socket.on("executeModal", data => {
+      console.log(data)
       dispatchGameState("executeModal", data)
     })
     socket.on("sendResults", data =>  { 
       dispatchGameState("sendResults", data)
     })
     socket.on("sendPersonalData", data => { 
+      console.log(data)
       dispatchUser("receivePersonalData", data);
     }) 
     socket.on("showChanceWheel", data => { 

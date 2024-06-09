@@ -30,6 +30,7 @@ const Shop: React.FC<{
     <div className={classes.shop}>
       Магазин
       {shopDetail === null || shopDetail.type === null ? (
+        
         <div className={classes.cardWrapper}>
           <div
             className={classes.card}
@@ -60,6 +61,7 @@ const Shop: React.FC<{
             <div className={classes.name}> Удвоение очков </div>{" "}
             <div className={classes.description}></div> Удвойте очки за задачу{" "}
           </div>
+          <div style={{position:"absolute", bottom:"0"}} onClick={() => { }}>закрыть</div>
         </div>
       ) : (
         <div className={classes.cardWrapper}>

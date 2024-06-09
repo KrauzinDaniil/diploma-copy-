@@ -115,3 +115,13 @@
    position: absolute;
    object-fit: cover;
 }
+.cardButton { 
+    cursor: pointer;
+}
+.cardButton:hover { 
+      color:saddlebrown
+}
+.cardWrapper{ 
+    display: flex;
+    flex-direction: row;
+}

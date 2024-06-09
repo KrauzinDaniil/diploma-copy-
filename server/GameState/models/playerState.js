@@ -12,6 +12,7 @@ export class Player {
     this.isReady = isReady;
     this.position = position;
     this.avatar = avatar;
+
   }
   addOwnedState(number) {
     this.ownedStates.push(number);
@@ -34,6 +35,15 @@ export class Player {
         this.bonusCards.set("addMultiplier", 2);
     }
   }
+  applyScore() { 
+    if(this.bonusCards.get("appliedScore") !== undefined) { 
+    this.score += this.bonusCards.get("appliedScore")
+    }
+  }
+  getWrongCardMultiplier() { 
+    if(this.bonusCards.get("deleteWrong") === undefined) { return false}
+    return this.bonusCards.get("deleteWrong")
+  } 
   provideBonusCardInfo(number) {
     switch (number) {
       case 1:
@@ -47,7 +57,7 @@ export class Player {
             type: "appliedScore",
           };
         } else {
-          return "Player has no bonus card 1";
+          return false;
         }
       case 2:
         if (this.bonusCards.get("deleteWrong") !== undefined) {

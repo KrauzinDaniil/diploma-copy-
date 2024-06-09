@@ -74,6 +74,7 @@ const Game: React.FC<{userPanelToShow:userTableDisplay[], teamName:string,
           displayTurn= {displayTurn}
           showModal = {setShowModal}
           triggerGameChange={triggerGameChange}
+          personalData =  {personalData}
         ></Modal>
       )} 
       <div className={classes.innerWrapper}>

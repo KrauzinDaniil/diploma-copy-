@@ -58,6 +58,9 @@ export default function userHadler(io, socket, playerMap, token, dispatch) {
     dispatch("userHandleStopSpinning", token)
   })
 
+  socket.on("deleteWrongOptions", data => { 
+    dispatch("deleteWrongOptions", token)
+  })
 
 
 }

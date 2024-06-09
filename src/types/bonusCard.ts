@@ -1,4 +1,4 @@
 export interface bonusCard {
-    type: "string";
+    type: string;
     amount: number
 }

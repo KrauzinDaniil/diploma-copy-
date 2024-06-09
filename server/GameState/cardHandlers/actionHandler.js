@@ -1,3 +1,4 @@
+import { random } from "@ctrl/tinycolor";
 import { DataBase } from "../../db/mysql.js";
 import { QuestionHandler } from "../models/question.js";
 import { CardAction } from "./cardAction.js";
@@ -5,11 +6,14 @@ export class ActionHandler {
    QUEST;
    actionSelector 
    db
+   bonusCardWrongActivated
+   bonusCardDoubleScoreActivated
    constructor() { 
       this.QUEST = new QuestionHandler();
       this.actionSelector = new CardAction()
       this.db = DataBase.getINSTANCE()
-    
+      this.bonusCardDoubleScoreActivated = false;
+      this.bonusCardWrongActivated = false;
       }
 
    async returnActionToScreen(position) {
@@ -73,10 +77,23 @@ export class ActionHandler {
          return this.handleSpinRequest(object.number);
         }
     }
+    modifyQuest(object) { 
+      if(this.bonusCardWrongActivated) { return {response : false}}
+      this.bonusCardWrongActivated = true;
+        while(object !== 0 ) { 
+          const numb = Math.floor(Math.random() * 10); 
+          if(numb !== this.QUEST.rightAnswer - 1) { 
+             this.QUEST.answers[numb] = "incorrect"
+             object--;
+          }
+        }
+        return {response : true, data : this.QUEST}
+               
+    }
 
 
     provideQuest(object){ 
-      console.log("enter")
+      
       let res;
       if(!this.QUEST.modeMultiple) {
          if(object.number === this.QUEST.rightAnswer.toString()) { 
@@ -96,6 +113,8 @@ export class ActionHandler {
     }
 
     handleQuest(object, action) {
+      this.bonusCardWrongActivated = false; 
+      this.bonusCardDoubleScoreActivated = false;
       const questionToSend = Math.floor(Math.random() * object.length);
       this.rightAnswerAwaited = object[questionToSend]["rightAnswer"];
       const answers = [
