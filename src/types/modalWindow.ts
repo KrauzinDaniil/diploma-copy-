@@ -8,5 +8,6 @@ export interface modalWindow {
     type:string
     outcome:string | null
     inBlitzMode: boolean
+    score: number
 
 }

@@ -39,6 +39,8 @@
       height: 100px;
       width: 100px;
       align-self: flex-end;
+      justify-content: center;
+      text-wrap: nowrap;
   
       
 }
@@ -124,4 +126,8 @@
 .cardWrapper{ 
     display: flex;
     flex-direction: row;
+}
+.yourCards:hover{
+    color: yellow; 
+
 }

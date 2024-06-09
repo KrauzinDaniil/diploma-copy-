@@ -34,14 +34,16 @@ const Modal: React.FC<{
   return createPortal(
     obj !== undefined ? (
       <div className={classes.dialogContent}>
-        <div className={classes.mainLabel}> {obj?.type}</div>
+        <div className={classes.mainLabel}>  {obj?.type === "algebra" ? "Алгебра" : obj?.type === "programming" ? "Программирование" : obj?.type === "geometry" ? "Геометрия" : "Логика" }</div>
         <div className={classes.wrapper}>
           <div className={classes.question}>{obj?.question}</div>
           <div className={classes.imageDialog}>
             <FaBook className={classes.icon}></FaBook>
 
-            <div style={{ color: "saddlebrown" }}> Сложно</div>
-          </div>
+            <div style={{ color: "saddlebrown" }}> {obj?.difficulty === "easy" ? "Легко" : obj?.difficulty === "medium" ? "Средне" : "Тяжело" }</div>
+            <div style={{ color: "yellow" }}> {obj?.score + " очков"} </div>
+            
+          </div>Ч
         </div>
         <div className={classes.playerWrapper}>
           <div>

@@ -2,6 +2,7 @@ import { random } from "@ctrl/tinycolor";
 import { DataBase } from "../../db/mysql.js";
 import { QuestionHandler } from "../models/question.js";
 import { CardAction } from "./cardAction.js";
+import { response } from "express";
 export class ActionHandler { 
    QUEST;
    actionSelector 
@@ -74,6 +75,7 @@ export class ActionHandler {
       this.QUEST.multiplyScore(2);
       console.log(this.QUEST.score)
       this.QUEST.setLoseScoreMode(true);
+      return { data : this.QUEST, response:true }
     }
 
 

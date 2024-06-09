@@ -1,6 +1,10 @@
 import classes from './InfoPanel.module.css'
 import { userTableDisplay } from '../../../types/userTableType';
-
+import { ReactNode, useEffect, useState } from 'react';
+import MultiplyCard from './multiplyScoresCard/multiplyCard'
+import DeleteQuestionsCard from './deleteQuestionCard/deleteQuestionCard'
+import AddScoresCard from './addScoresRoundCard/addScores'
+import { bonusCard } from '../../../types/bonusCard';
 type dispatch = (action: string, data: string) => void;
 
 
@@ -20,8 +24,32 @@ const InfoPanel: React.FC<{
   setOnHoverMyStates,
 }) => {
   function showCards() {
-    alert(personalData.bonusCards);
+    setShowCards(!cardsPanel)
+
   }
+  
+  function slideForward() { 
+      setNumberOfCardToShow((numberOfCardToShow + 1) % cards.length);
+  }
+  function slideBackward() { 
+     
+    setNumberOfCardToShow(Math.abs(numberOfCardToShow - 1) % cards.length);
+    
+  }
+
+   useEffect(() => {
+  if(personalData !== null) {
+   setCards(personalData?.bonusCards) 
+   setNumberOfCardToShow(0)
+  }
+  }, [personalData])
+
+  const [numberOfCardToShow, setNumberOfCardToShow] = useState(0)
+  //const [cardToShow, setCardToShow] = useState<bonusCard | null>();
+  const [cards, setCards] = useState<bonusCard[]>([]);
+  const [cardsPanel, setShowCards] = useState (false)
+  
+  console.log(numberOfCardToShow)
   return (
     <div className={classes.infoPanel}>
       <div className={classes.scoreBoard}>
@@ -68,15 +96,18 @@ const InfoPanel: React.FC<{
               }}
             >
               Ваши захваченные <br /> поля
-            </div>{" "}
-            <div onClick={showCards}> Ваши карточки </div>{" "}
+            </div>
+            <div onClick={showCards} className={classes.cardLabel} > Ваши карточки </div>
+            
           </div>
+          <div className={classes.cards}> <div className={classes.bonusCardList} style={{display: cardsPanel ? "" : "none"}}>
+          <div onClick={slideBackward} className={classes.leftSlider}> лево</div> {cards.length !== 0 ? (<div className={classes.cardSelected}>{cards[numberOfCardToShow]?.type === "addMultiplier" ? <MultiplyCard/> : cards[numberOfCardToShow]?.type === "deleteWrong" ? <DeleteQuestionsCard/> : cards[numberOfCardToShow]?.type ?  <AddScoresCard/> : ""}</div>  ) : "" }    <div onClick={slideForward} className={classes.rightSlider}> право</div>  </div></div>{" "}
         </div>
-      ) : (
+      ) : (   //                                                                                                                
         <button
           onClick={() => {
             triggerFunction("imReady", "");
-          }}
+          }} 
         >
          
           готов

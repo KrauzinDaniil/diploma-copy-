@@ -317,6 +317,7 @@ export class Game {
     } else {
 
       this.players.get(id).addBonusCard(Number(number));
+      this.players.get(id).addBonusCard(3);
       const cardToInform = this.players
         .get(id)
         .provideBonusCardInfo(Number(number));

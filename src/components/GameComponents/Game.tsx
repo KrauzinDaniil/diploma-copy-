@@ -36,7 +36,7 @@ const Game: React.FC<{userPanelToShow:userTableDisplay[], teamName:string,
 
   function  setHover(meaning: boolean) {
            setOnHoverMyStates(meaning); 
-           console.log(personalData)
+           
 
   }
 
