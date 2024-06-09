@@ -101,7 +101,7 @@ const InfoPanel: React.FC<{
             
           </div>
           <div className={classes.cards}> <div className={classes.bonusCardList} style={{display: cardsPanel ? "" : "none"}}>
-          <div onClick={slideBackward} className={classes.leftSlider}> лево</div> {cards.length !== 0 ? (<div className={classes.cardSelected}>{cards[numberOfCardToShow]?.type === "addMultiplier" ? <MultiplyCard/> : cards[numberOfCardToShow]?.type === "deleteWrong" ? <DeleteQuestionsCard/> : cards[numberOfCardToShow]?.type ?  <AddScoresCard/> : ""}</div>  ) : "" }    <div onClick={slideForward} className={classes.rightSlider}> право</div>  </div></div>{" "}
+          <div onClick={slideBackward} className={classes.leftSlider}><div className={classes.wra}>лево</div> </div> {cards.length !== 0 ? (<div className={classes.cardSelected}>{cards[numberOfCardToShow]?.type === "addMultiplier" ? <MultiplyCard/> : cards[numberOfCardToShow]?.type === "deleteWrong" ? <DeleteQuestionsCard amount={cards[numberOfCardToShow].amount}/> : cards[numberOfCardToShow]?.type ?  <AddScoresCard amount={cards[numberOfCardToShow].amount}/> : ""}</div>  ) : "" }    <div onClick={slideForward} className={classes.rightSlider}><div className={classes.wra}> право</div></div>  </div></div>{" "}
         </div>
       ) : (   //                                                                                                                
         <button

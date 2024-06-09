@@ -15,8 +15,13 @@
     cursor: pointer;
     color:yellow
     }
+.cardLabel { 
+    
+}    
 .cards { 
     display: flex;
+    height: 50%;
+    justify-content: center;
 }
 .scoreBoard { 
     width: 100%;
@@ -25,11 +30,12 @@
 
 }
 .bonusCardList{ 
-    background-color: rgb(20, 49, 75) ;
+    
     display: flex;
     justify-content: space-around;
     width: 100%;
-    background-color: rgb(158, 158, 158);
+    
+  
 
 }
 .teamCircle { 
@@ -38,7 +44,7 @@
     width: 100px;
     border-radius: 50%;
     position: relative;
-    background-color: aquamarine;
+    
     border: 5px solid white;
  
  }
@@ -92,6 +98,8 @@
    margin-top: 5%;
    margin-left: 5%;
    width: 100%;
+   height: 100%;
+  
 }
 
 .youLabel {
@@ -132,16 +140,29 @@
     margin-top: 10%;
     display: flex;
     justify-content: space-evenly;
+    
+    
 }
 .leftSlider { 
     width: 10%;
-    background-color: aquamarine;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+
 }
 .rightSlider{ 
     width: 10%;
     margin-right: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
 }
 .cardSelected {
-    background-color:brown;
+
     width: 50%;
+    border: 5px solid saddlebrown;
+    border-radius: 10%;
+    height: 100%;
 }
