@@ -138,8 +138,11 @@ export class ServerSocket {
               id: this.getId(data)
             }) 
          break 
-         case"deleteWrongOptions":
+         case "deleteWrongOptions":
             this.gameDispatch("deleteWrongOptions", {id: this.getId(data)}) 
+         break 
+         case "clickedMultiplyCard": 
+            this.gameDispatch("clickedMultiplyCard", {id:this.getId(data)})   
       }
     } catch (error) {
       ("");

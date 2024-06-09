@@ -61,6 +61,9 @@ export default function userHadler(io, socket, playerMap, token, dispatch) {
   socket.on("deleteWrongOptions", data => { 
     dispatch("deleteWrongOptions", token)
   })
+  socket.on("clickedMultiplyCard", data =>   {
+    dispatch("clickedMultiplyCard", token)
+  })
 
 
 }

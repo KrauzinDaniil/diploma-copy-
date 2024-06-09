@@ -110,5 +110,8 @@ export class SocketShell {
     deleteWrongOptions() { 
         this.socket?.emit("deleteWrongOptions", "");
     }
+    clickedMultiplyCard() {
+        this.socket?.emit("clickedMultiplyCard", "")
+    }
 
 }

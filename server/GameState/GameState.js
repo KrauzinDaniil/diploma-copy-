@@ -117,10 +117,10 @@ export class Game {
       this.serverSocket.sendResult("Правильно");
       this.players.get(object.id).score += result.score;
       this.players.get(object.id).addOwnedState(this.actionPosition);
-      this.getPersonalData(object.id);
       this.playerOwnedStates.set(this.actionPosition, object.id);
       this.setTurn();
     } else {
+      this.players.get(object.id).score += result.score;
       this.serverSocket.sendResult("Неверно");
       this.setTurn();
     }
@@ -261,6 +261,21 @@ export class Game {
       }
     }, 500);
   }
+  doubleUpQuestionScore(id) { 
+    if(id !== this.currentTurn) {return}
+    const doubleQuestScore = this.players.get(id).getQuestionScore();
+    let result; 
+    if(doubleQuestScore != false)  {
+         result = this.actionHandler.modifyQuestMultiplier();
+    }
+    if(result.response === true) { 
+      this.serverSocket.executeModal(JSON.stringify(result.data))
+    }
+  }
+
+
+
+
   //выдать клиенту (определенному) его данные 
   getPersonalData(id) {
     const toSend = this.players.get(id);
@@ -273,7 +288,7 @@ export class Game {
     const cutQuestNumber = this.players.get(id).getWrongCardMultiplier();
     let result; 
     if(cutQuestNumber != false)  {
-         result = this.actionHandler.modifyQuest(cutQuestNumber);
+         result = this.actionHandler.modifyQuestAnswers(cutQuestNumber);
     }
     if(result.response === true) { 
       this.serverSocket.executeModal(JSON.stringify(result.data))
@@ -355,6 +370,9 @@ export class Game {
         break
       case "deleteWrongOptions": 
          this.deleteWrongOptionsFromQuest(data.id)    
+        break 
+      case "clickedMultiplyCard":
+         this.doubleUpQuestionScore(data.id)    
     }
   };
 }

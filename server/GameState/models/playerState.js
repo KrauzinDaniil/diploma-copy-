@@ -44,6 +44,10 @@ export class Player {
     if(this.bonusCards.get("deleteWrong") === undefined) { return false}
     return this.bonusCards.get("deleteWrong")
   } 
+  getQuestionScore() { 
+    if(this.bonusCards.get("addMultiplier") === undefined) { return false}
+    return this.bonusCards.get("addMultiplier")
+  }
   provideBonusCardInfo(number) {
     switch (number) {
       case 1:

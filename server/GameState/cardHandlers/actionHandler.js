@@ -6,14 +6,14 @@ export class ActionHandler {
    QUEST;
    actionSelector 
    db
-   bonusCardWrongActivated
-   bonusCardDoubleScoreActivated
+   bonusCardActivated
+   score
    constructor() { 
       this.QUEST = new QuestionHandler();
       this.actionSelector = new CardAction()
       this.db = DataBase.getINSTANCE()
-      this.bonusCardDoubleScoreActivated = false;
-      this.bonusCardWrongActivated = false;
+      this.bonusCardActivated = false;
+      this.score = 200;
       }
 
    async returnActionToScreen(position) {
@@ -68,6 +68,14 @@ export class ActionHandler {
       } 
 
     }
+    modifyQuestMultiplier() { 
+      if(this.bonusCardActivated) { return {response : false}}
+      this.bonusCardActivated = true;
+      this.QUEST.multiplyScore(2);
+      console.log(this.QUEST.score)
+      this.QUEST.setLoseScoreMode(true);
+    }
+
 
     returnOutcomeToScreen(object) { 
         switch(object.action) { 
@@ -77,9 +85,9 @@ export class ActionHandler {
          return this.handleSpinRequest(object.number);
         }
     }
-    modifyQuest(object) { 
-      if(this.bonusCardWrongActivated) { return {response : false}}
-      this.bonusCardWrongActivated = true;
+    modifyQuestAnswers(object) { 
+      if(this.bonusCardActivated) { return {response : false}}
+      this.bonusCardActivated = true;
         while(object !== 0 ) { 
           const numb = Math.floor(Math.random() * 10); 
           if(numb !== this.QUEST.rightAnswer - 1) { 
@@ -98,11 +106,11 @@ export class ActionHandler {
       if(!this.QUEST.modeMultiple) {
          if(object.number === this.QUEST.rightAnswer.toString()) { 
            res = {res: "Правильно", score:this.QUEST.score, mode: "single"}
-         } else { res = {res: "Неправильно", mode:"single"} }
+         } else { res = {res: "Неправильно",  score: this.QUEST.loseScoreMode ? this.QUEST.score * -1 : 0 , mode:"single"} }
         
 
      }
-     console.log(res)
+
      return res;
     }
 
@@ -113,8 +121,8 @@ export class ActionHandler {
     }
 
     handleQuest(object, action) {
-      this.bonusCardWrongActivated = false; 
-      this.bonusCardDoubleScoreActivated = false;
+      this.bonusCardActivated = false; 
+     
       const questionToSend = Math.floor(Math.random() * object.length);
       this.rightAnswerAwaited = object[questionToSend]["rightAnswer"];
       const answers = [
@@ -137,6 +145,7 @@ export class ActionHandler {
           action.data.difficulty,
           object[questionToSend]["rightAnswer"]
         );
+        this.QUEST.setScore(action.data.difficulty === "easy" ? 200 : action.data.difficulty === "medium" ? 300 : 400) 
        /*else {
         
         this.QUEST.setQuestion(

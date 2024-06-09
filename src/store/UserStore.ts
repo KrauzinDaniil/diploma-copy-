@@ -127,6 +127,10 @@ class UserStore {
   deleteWrongOptions = () =>  {
     this.socket.deleteWrongOptions();
   }
+  @action 
+  clickedMultiplyCard = () => { 
+    this.socket.clickedMultiplyCard();
+  }
  
  
   dispatchUserState = (action:string, data:string) => { 
@@ -171,7 +175,9 @@ class UserStore {
           break 
           case "clickedDeleteWrongCard": 
           this.deleteWrongOptions();
-          
+          break 
+          case "clickedMultiplyScores": 
+          this.clickedMultiplyCard();
 
           
         }

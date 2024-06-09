@@ -9,12 +9,14 @@ export class QuestionHandler{
     modeMultiple
     rightAnswer
     inBlitzMode
+    loseScoreMode 
     constructor () { 
          this.question = "" 
          this.answers = []
          this.owner = null;
          this.modeMultiple = false
          this.inBlitzMode = false;
+         this.loseScoreMode = false;
     }
     
 
@@ -42,6 +44,16 @@ export class QuestionHandler{
     setMode(mean) { 
         this.modeMultiple = mean;
     }
+    setScore(score) { 
+        this.score = score
+    }
+    multiplyScore(multipier) { 
+        this.score *= multipier;
+        this.score = Math.floor(this.score)
+    }
+    setLoseScoreMode(mode) { 
+       this.loseScoreMode = mode;
+    } 
 
 
 }

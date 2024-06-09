@@ -185,7 +185,7 @@ const Modal: React.FC<{
         <div className={classes.cardWrapper}> 
             
             <div onClick={() => { triggerUserChange("clickedDeleteWrongCard", "") }}> {personalData?.bonusCards[personalData.bonusCards.findIndex(obj => obj.type ==="deleteWrong")]?.type}</div>
-            <div onClick={() => { triggerUserChange("clickedMultiplyScores", "") }}> {personalData?.bonusCards[personalData.bonusCards.findIndex(obj => obj.type ==="appliedScore")]?.type}</div>
+            <div onClick={() => { triggerUserChange("clickedMultiplyScores", "") }}> {personalData?.bonusCards[personalData.bonusCards.findIndex(obj => obj.type ==="addMultiplier")]?.type}</div>
           
         </div>
             </div> : obj.outcome === "Правильно" ? (
