@@ -48,7 +48,7 @@ export class ServerSocket {
     data.bonusCards.forEach((value, key) => {
       newData.bonusCards.push({type: key, amount:value})
     });
-    console.log(newData)
+ 
     this.io
       .to(this.mapPlayerIdToSocket.get(id))
       .emit("sendPersonalData", JSON.stringify(newData));
@@ -143,6 +143,9 @@ export class ServerSocket {
          break 
          case "clickedMultiplyCard": 
             this.gameDispatch("clickedMultiplyCard", {id:this.getId(data)})   
+         break 
+         case "closeShop":  
+            this.gameDispatch("closeShop", {id: this.getId(data)})   
       }
     } catch (error) {
       ("");

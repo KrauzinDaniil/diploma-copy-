@@ -113,8 +113,11 @@
 
 
 }
-.teamName { 
-    
+.owned{ 
+    cursor: pointer;
+}
+.owned:hover {
+    color: yellow
 }
 .teamData {
     
@@ -144,6 +147,7 @@
     
 }
 .leftSlider { 
+    cursor: pointer;
     width: 10%;
     display: flex;
     justify-content: center;
@@ -152,6 +156,7 @@
 
 }
 .rightSlider{ 
+    cursor: pointer;
     width: 10%;
     margin-right: 5%;
     display: flex;
@@ -165,4 +170,7 @@
     border: 5px solid saddlebrown;
     border-radius: 10%;
     height: 100%;
+}
+.wra:hover { 
+    color: yellow;
 }

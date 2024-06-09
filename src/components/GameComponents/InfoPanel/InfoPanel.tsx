@@ -5,6 +5,9 @@ import MultiplyCard from './multiplyScoresCard/multiplyCard'
 import DeleteQuestionsCard from './deleteQuestionCard/deleteQuestionCard'
 import AddScoresCard from './addScoresRoundCard/addScores'
 import { bonusCard } from '../../../types/bonusCard';
+import { FaChevronLeft } from "react-icons/fa";
+import { FaChevronRight } from "react-icons/fa";
+
 type dispatch = (action: string, data: string) => void;
 
 
@@ -49,7 +52,7 @@ const InfoPanel: React.FC<{
   const [cards, setCards] = useState<bonusCard[]>([]);
   const [cardsPanel, setShowCards] = useState (false)
   
-  console.log(numberOfCardToShow)
+
   return (
     <div className={classes.infoPanel}>
       <div className={classes.scoreBoard}>
@@ -87,7 +90,7 @@ const InfoPanel: React.FC<{
 
           <div className={classes.whatYouOwn}>
             {" "}
-            <div
+            <div className={classes.owned}
               onMouseOver={() => {
                 setOnHoverMyStates(true);
               }}
@@ -101,7 +104,7 @@ const InfoPanel: React.FC<{
             
           </div>
           <div className={classes.cards}> <div className={classes.bonusCardList} style={{display: cardsPanel ? "" : "none"}}>
-          <div onClick={slideBackward} className={classes.leftSlider}><div className={classes.wra}>лево</div> </div> {cards.length !== 0 ? (<div className={classes.cardSelected}>{cards[numberOfCardToShow]?.type === "addMultiplier" ? <MultiplyCard/> : cards[numberOfCardToShow]?.type === "deleteWrong" ? <DeleteQuestionsCard amount={cards[numberOfCardToShow].amount}/> : cards[numberOfCardToShow]?.type ?  <AddScoresCard amount={cards[numberOfCardToShow].amount}/> : ""}</div>  ) : "" }    <div onClick={slideForward} className={classes.rightSlider}><div className={classes.wra}> право</div></div>  </div></div>{" "}
+          <div onClick={slideBackward} className={classes.leftSlider}><div className={classes.wra}><FaChevronLeft/></div> </div> {cards.length !== 0 ? (<div className={classes.cardSelected}>{cards[numberOfCardToShow]?.type === "addMultiplier" ? <MultiplyCard/> : cards[numberOfCardToShow]?.type === "deleteWrong" ? <DeleteQuestionsCard amount={cards[numberOfCardToShow].amount}/> : cards[numberOfCardToShow]?.type ?  <AddScoresCard amount={cards[numberOfCardToShow].amount}/> : ""}</div>  ) : "" }    <div onClick={slideForward} className={classes.rightSlider}><div className={classes.wra}><FaChevronRight/></div></div>  </div></div>{" "}
         </div>
       ) : (   //                                                                                                                
         <button

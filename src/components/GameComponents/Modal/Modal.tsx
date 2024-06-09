@@ -5,6 +5,8 @@ import { modalWindow } from "../../../types/modalWindow";
 import { displayTurn } from "../../../types/displayTurn";
 import { useState } from "react";
 import { userTableDisplay } from "../../../types/userTableType";
+import MultiplyCard from "../InfoPanel/multiplyScoresCard/multiplyCard";
+import DeleteQuestionsCard from "../InfoPanel/deleteQuestionCard/deleteQuestionCard";
 const modalDialog = document.getElementById("modal");
 type triggerFunc = (action: string, data: string) => void;
 type UpdateStateFunction = (newValue: boolean) => void;
@@ -24,6 +26,8 @@ const Modal: React.FC<{
     showModal(false);
   }
 
+ 
+  
   const clicked = (number: number) => {
     triggerUserChange("sendAnswer", number.toString());
   };
@@ -31,6 +35,7 @@ const Modal: React.FC<{
   if (!modalDialog) {
     return null;
   }
+  
   return createPortal(
     obj !== undefined ? (
       <div className={classes.dialogContent}>
@@ -43,7 +48,7 @@ const Modal: React.FC<{
             <div style={{ color: "saddlebrown" }}> {obj?.difficulty === "easy" ? "Легко" : obj?.difficulty === "medium" ? "Средне" : "Тяжело" }</div>
             <div style={{ color: "yellow" }}> {obj?.score + " очков"} </div>
             
-          </div>Ч
+          </div>
         </div>
         <div className={classes.playerWrapper}>
           <div>
@@ -182,13 +187,12 @@ const Modal: React.FC<{
             </div>
           </div>
         ) : 
-           <div>
-            Ваши карточки 
+           <div className={classes.outerWrapper}>
+       
         <div className={classes.cardWrapper}> 
+            {personalData?.bonusCards.map((value, index) => ( value.type !== "appliedScore" ? (<div className={classes.innerCard} >{value.type === "deleteWrong" ? <span><DeleteQuestionsCard amount={value.amount}/> <div className={classes.activateButton} onClick={() => {triggerUserChange("clickedDeleteWrongCard","")}}> Активировать</div></span>  : value.type === "addMultiplier" ?<span><MultiplyCard/><div  className={classes.activateButton} onClick={() => {triggerUserChange("clickedMultiplyScores","")}}> Активировать</div></span>  : "" }</div>) : ""))}
             
-            <div onClick={() => { triggerUserChange("clickedDeleteWrongCard", "") }}> {personalData?.bonusCards[personalData.bonusCards.findIndex(obj => obj.type ==="deleteWrong")]?.type}</div>
-            <div onClick={() => { triggerUserChange("clickedMultiplyScores", "") }}> {personalData?.bonusCards[personalData.bonusCards.findIndex(obj => obj.type ==="addMultiplier")]?.type}</div>
-          
+           
         </div>
             </div> : obj.outcome === "Правильно" ? (
           <div>

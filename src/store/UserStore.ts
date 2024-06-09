@@ -131,6 +131,10 @@ class UserStore {
   clickedMultiplyCard = () => { 
     this.socket.clickedMultiplyCard();
   }
+  @action
+  closeShop = () => { 
+    this.socket.closeShop();
+  }
  
  
   dispatchUserState = (action:string, data:string) => { 
@@ -178,6 +182,9 @@ class UserStore {
           break 
           case "clickedMultiplyScores": 
           this.clickedMultiplyCard();
+          break 
+          case "closeShop": 
+          this.closeShop();
 
           
         }

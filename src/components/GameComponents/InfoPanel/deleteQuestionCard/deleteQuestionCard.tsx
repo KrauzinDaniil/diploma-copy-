@@ -1,6 +1,6 @@
 import { useState } from "react";
 import classes from "./deleteQuestionCards.module.css"
-const DeleteQuestionsCard: React.FC<{amount: number}> = (amount) => { 
+const DeleteQuestionsCard: React.FC<{amount: number}> = ({amount}) => { 
 
     const [isClicked, setIsClicked] = useState(false);
     return (<div className={classes.cardWrapper}>

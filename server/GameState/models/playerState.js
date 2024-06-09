@@ -52,10 +52,7 @@ export class Player {
     switch (number) {
       case 1:
         if (this.bonusCards.get("appliedScore") !== undefined) {
-            console.log({
-                amount: this.bonusCards.get("appliedScore"),
-                type: "appliedScore",
-              })
+         
           return {
             amount: this.bonusCards.get("appliedScore"),
             type: "appliedScore",
@@ -65,10 +62,7 @@ export class Player {
         }
       case 2:
         if (this.bonusCards.get("deleteWrong") !== undefined) {
-            console.log({
-                amount: this.bonusCards.get("deleteWrong"),
-                type: "appliedScore",
-              })
+          
           return {
             amount: this.bonusCards.get("deleteWrong"),
             type: "deleteWrong",
@@ -79,10 +73,7 @@ export class Player {
 
       case 3:
         if (this.bonusCards.get("addMultiplier") !== undefined) {
-            console.log({
-                amount: this.bonusCards.get(number),
-                type: "appliedScore",
-              })
+            
           return {
             amount: this.bonusCards.get("addMultiplier"),
             type: "addMultiplier",

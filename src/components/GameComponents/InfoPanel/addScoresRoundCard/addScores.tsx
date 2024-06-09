@@ -3,7 +3,7 @@ import classes from "./addScores.module.css"
 const AddScoresCard: React.FC<{amount:number}> = ({amount}) => { 
 
     const [isClicked, setIsClicked] = useState(false);
-    console.log(amount)
+    
     return (<div className={classes.cardWrapper}>
         
         <div className={classes.imageWrapper} onClick={() =>  {setIsClicked(!isClicked)}}> {!isClicked ? <img src={"/public/addScore.png"} className={classes.imageCard}/> : (<div className={classes.textDescription}>

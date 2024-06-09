@@ -279,8 +279,7 @@ export class Game {
   //выдать клиенту (определенному) его данные 
   getPersonalData(id) {
     const toSend = this.players.get(id);
-    console.log("sended")
-    console.log(toSend)
+   
     this.serverSocket.sendPersonalData(toSend, id);
   }
   deleteWrongOptionsFromQuest(id)  {
@@ -317,7 +316,7 @@ export class Game {
     } else {
 
       this.players.get(id).addBonusCard(Number(number));
-      this.players.get(id).addBonusCard(3);
+
       const cardToInform = this.players
         .get(id)
         .provideBonusCardInfo(Number(number));
@@ -334,6 +333,11 @@ export class Game {
         this.setTurn();
       }, 5000);
     }
+  }
+
+  shopClose(id) { 
+     if(id !== this.currentTurn) { return}
+     this.setTurn();
   }
   //обработать поступление с сокета
   dispatch = (action, data) => {
@@ -374,6 +378,9 @@ export class Game {
         break 
       case "clickedMultiplyCard":
          this.doubleUpQuestionScore(data.id)    
+        break
+      case  "closeShop": 
+         this.shopClose(data.id);  
     }
   };
 }

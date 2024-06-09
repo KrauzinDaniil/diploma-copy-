@@ -128,7 +128,7 @@ class GameStore {
       this.modalToDisplay = data;
       this.spinning = true;
     });
-    console.log(this.modalToDisplay)
+   
   };
 
   @action

@@ -113,5 +113,8 @@ export class SocketShell {
     clickedMultiplyCard() {
         this.socket?.emit("clickedMultiplyCard", "")
     }
+    closeShop() { 
+        this.socket?.emit("closeShop", "")
+    }
 
 }
