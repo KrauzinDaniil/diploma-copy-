@@ -58,9 +58,9 @@ const ActionPicker: React.FC<{dices: DicesProps, displayTurn: displayTurn, teamN
         <div
           className={classes.buttonThrow}
           onClick={() => {
-            if(displayTurn.teamName === teamName) { 
+             if(teamName === displayTurn.teamName) {
                 dices.triggerFunction("diceClicked", "");
-            }
+             }
           }}
         >
 

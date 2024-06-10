@@ -54,8 +54,15 @@ export class Game {
     this.players.get(1).position = 35;
     this.players.get(0).score = 3500;
     this.players.get(1).score = 3500;
+    this.players.get(0).addBonusCard(2)
+    this.players.get(0).addBonusCard(3)
     this.players.get(0).addOwnedState(4);
     this.playerOwnedStates.set(4, 0);
+  }
+  setPlayerBlitzTest() {
+    this.players.get(0).position = 35;
+    this.players.get(1).po
+   
   }
 
   //начать игру

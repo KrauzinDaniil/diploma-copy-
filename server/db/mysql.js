@@ -41,7 +41,6 @@ export class DataBase {
   async select(type, difficulty) {
     return new Promise((resolve, reject) => {
         this.connection.query(`select * from questions as ques join answers as ans on ques.id = ans.id where ques.type = "${type}" AND ques.difficulty = "${difficulty}"`, 
-
         (err, result, fields) => {
             if (err) {
                 reject(err);

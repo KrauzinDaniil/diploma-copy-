@@ -94,6 +94,7 @@ const Modal: React.FC<{
                 onClick={() => {
                   clicked(1);
                 }}
+                
                 className={classes.buttonAnswer}
                 style={{backgroundColor: obj?.answers[0] === "incorrect" ? "saddlebrown" : "transparent" }}
               >
@@ -195,14 +196,14 @@ const Modal: React.FC<{
            
         </div>
             </div> : obj.outcome === "Правильно" ? (
-          <div>
-            <div> Верно</div>
-            <div onClick={hide}> Продолжить </div>
+          <div className={classes.outcomE}>
+            <div style={{color : "green"}}> Верно</div>
+            <div onClick={hide} style={{marginTop: "10%"}} className={classes.continueButton}> Продолжить </div>
           </div>
         ) : (
-          <div>
-            <div> Неверно</div>
-            <div onClick={hide}> Продолжить </div>
+          <div className={classes.outcomE}>
+            <div style={{color : "red"}}> Неверно</div>
+            <div onClick={hide} style={{marginTop: "10%"}} className={classes.continueButton}> Продолжить </div>
           </div>
         )}
 

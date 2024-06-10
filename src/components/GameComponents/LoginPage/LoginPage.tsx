@@ -23,7 +23,6 @@ const LoginPage: React.FC<{fun: (teamName :string, borderColor : string, avatar:
   const getActiveColors = (colors: string[]) =>
     colors.map((color) => new TinyColor(color).darken(5).toString());
     const onFinish = (values: props) => {
-    console.log("Received values:", values);
     fun(values.teamName, teamColor, selectedAvatar?.toString() );
     disableButton(true);
   };

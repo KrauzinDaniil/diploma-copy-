@@ -1,8 +1,7 @@
-import { random } from "@ctrl/tinycolor";
 import { DataBase } from "../../db/mysql.js";
 import { QuestionHandler } from "../models/question.js";
 import { CardAction } from "./cardAction.js";
-import { response } from "express";
+
 export class ActionHandler { 
    QUEST;
    actionSelector 
@@ -147,20 +146,7 @@ export class ActionHandler {
           object[questionToSend]["rightAnswer"]
         );
         this.QUEST.setScore(action.data.difficulty === "easy" ? 200 : action.data.difficulty === "medium" ? 300 : 400) 
-       /*else {
-        
-        this.QUEST.setQuestion(
-          object[questionToSend]["question"],
-          answers,
-          action.data.type,
-          action.data.difficulty,
-          object[questionToSend]["rightAnswer"]
-        );
-        this.QUEST.setOwner(
-          this.players.get(this.playerOwnedStates.get(this.actionPosition))
-        );
-        this.QUEST.setMode(true)
-      }*/
+      
       return { action: "quest", data: this.QUEST };
     }
     
