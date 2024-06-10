@@ -11,10 +11,16 @@ const Shop: React.FC<{
   function clicked(data: string) {
     dispatchUserState("userClickedOnCard", data);
   }
-
+  const [cardClicked, setCardClicked] = useState();
 
   const [shopDetail, setShopDetail] = useState(information);
 
+  const [isClickeAddScoreCard, setIsClickedAddScoreCard] = useState(false)
+
+  const [isClickedDeleteCard, setIsClickedDeleteCard] = useState(false)
+
+  const [isClickedDoubleUpCard, setIsClickedDoubleUpCard] = useState(false)
+  
   useEffect(() => {
     setShopDetail(information)
   }, [information]) 
@@ -35,31 +41,50 @@ const Shop: React.FC<{
           <div
             className={classes.card}
             onClick={() => {
+              if(isClickeAddScoreCard) { 
               clicked("1");
+              } else {  
+                setIsClickedAddScoreCard(true);
+              }
             }}
           >
             <div className={classes.name}> Карта бонусных очков </div>{" "}
+           {!isClickeAddScoreCard  ? (<img src={"/public/addScore.png"} alt="" className={classes.innerImage} />) : "" } 
             <div className={classes.description}></div> За каждый дополнительный
             круг получите очки в диапазоне от 100 до 500
+            <div style={{marginTop: "5%"}}>Цена 1000 очков </div>
           </div>
           <div
             className={classes.card}
             onClick={() => {
-              clicked("2");
+
+              if(isClickedDeleteCard) { 
+              clicked("2")
+
+          
+              } else  {             setIsClickedDeleteCard(true);}
             }}
           >
             <div className={classes.name}> Карта лишнего варианта</div>{" "}
+         {!isClickedDeleteCard ? (<img src={"/public/delete.jpg"} alt="" className={classes.innerImage} />) : "" }   
             <div className={classes.description}></div> Уберите половину
             неправильных вариантов{" "}
+            <div style={{marginTop: "5%"}}>Цена 750 очков </div>
           </div>
           <div
             className={classes.card}
             onClick={() => {
+              if(isClickedDoubleUpCard) { 
               clicked("3");
+              }else {
+                setIsClickedDoubleUpCard(true);
+              }
             }}
           >
             <div className={classes.name}> Удвоение очков </div>{" "}
-            <div className={classes.description}></div> Удвойте очки за задачу{" "}
+            {!isClickedDoubleUpCard ? (<img src={"/public/multiply.png"} alt="" className={classes.innerImage} />) : "" }     
+            <div className={classes.description}></div> Удвойте очки за задачу 
+            <div style={{marginTop: "5%"}}> Цена 1250 очков </div>
           </div>
           <div style={{position:"absolute", bottom:"0"}} onClick={() => { dispatchUserState("closeShop", "")}}>закрыть</div>
         </div>
@@ -75,11 +100,14 @@ const Shop: React.FC<{
                 <div>
                   При использовании этой карты будет удалено неправильных
                   ответов: {shopDetail.amount}
+
+                  
                 </div>
               ) : (
                 <div>
                   Используйте эту карту чтобы удвоить свое количество очков,
                   если правильно ответите
+                
                 </div>
               )}
             </div>
@@ -87,7 +115,9 @@ const Shop: React.FC<{
           </div>
         </div>
       )}
+      <div>
       {information?.inform}
+      </div>
     </div>,
     modalShop
   );

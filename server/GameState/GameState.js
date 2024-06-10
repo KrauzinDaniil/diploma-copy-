@@ -3,7 +3,6 @@ import { Player } from "./models/playerState.js";
 import { randomNumber } from "../utils/generateRandom.js";
 import { BonusCardInfoProvider } from "./bonusCards.js/bonusCardInfoProvider.js";
 import { ActionHandler } from "./cardHandlers/actionHandler.js";
-import e from "cors";
 export class Game {
   id;
   isStarted;
@@ -316,21 +315,25 @@ export class Game {
     } else {
 
       this.players.get(id).addBonusCard(Number(number));
+      
 
       const cardToInform = this.players
         .get(id)
         .provideBonusCardInfo(Number(number));
+
+        this.players.get(id).score -= cardToInform.price;
       this.serverSocket.informPlayerPurchase({
         inform: "Вы приобрели карту",
         amount: cardToInform.amount,
         type: cardToInform.type,
       });
       this.getPersonalData(id);
-     
+      
       setTimeout(() => {
         
         this.serverSocket.hideWheel();
         this.setTurn();
+        this.serverSocket.emitProvideState(this.provideGameState(this.currentTurn))
       }, 5000);
     }
   }

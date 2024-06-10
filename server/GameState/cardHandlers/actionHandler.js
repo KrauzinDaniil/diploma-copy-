@@ -73,7 +73,6 @@ export class ActionHandler {
       if(this.bonusCardActivated) { return {response : false}}
       this.bonusCardActivated = true;
       this.QUEST.multiplyScore(2);
-      console.log(this.QUEST.score)
       this.QUEST.setLoseScoreMode(true);
       return { data : this.QUEST, response:true }
     }

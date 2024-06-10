@@ -56,6 +56,7 @@ export class Player {
           return {
             amount: this.bonusCards.get("appliedScore"),
             type: "appliedScore",
+            price: 1000
           };
         } else {
           return false;
@@ -66,6 +67,7 @@ export class Player {
           return {
             amount: this.bonusCards.get("deleteWrong"),
             type: "deleteWrong",
+            price: 750
           };
         } else {
           return "Player has no bonus card 2";
@@ -77,6 +79,7 @@ export class Player {
           return {
             amount: this.bonusCards.get("addMultiplier"),
             type: "addMultiplier",
+            price: 1250
           };
         } else {
           return "Player has no bonus card 3";

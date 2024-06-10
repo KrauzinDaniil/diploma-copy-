@@ -22,12 +22,10 @@ export default function listenerSetter(socket: Socket, dispatchUser: (action: st
         dispatchGameState("spinCube", data)
     })
     socket.on("provideState", data =>{  
-
         dispatchGameState("getState", data)
         dispatchUser("getState", data);
     })
     socket.on("executeModal", data => {
-      console.log(data)
       dispatchGameState("executeModal", data)
     })
     socket.on("sendResults", data =>  { 
